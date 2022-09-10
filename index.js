@@ -15,7 +15,7 @@ const useProfile = require("./routes/profile.js");
 dotenv.config();
 
 mongoose 
- .connect(process.env.MONGO_DB,)   
+ .connect("mongodb+srv://naveenprasanth:naveen777@cluster0.e8tk9bc.mongodb.net/Share?retryWrites=true&w=majority",)   
  .then(() => console.log("Database connected!"))
  .catch(err => console.log(err));
 
@@ -30,6 +30,6 @@ app.use("/api/auth",useAuth)
 app.use("/api/posts",usePost)
 app.use("/api/profile",useProfile)
 
-app.listen(8900,()=>{
+app.listen(process.env.PORT || 8900,()=>{
     console.log("Backend server connected")
 })
