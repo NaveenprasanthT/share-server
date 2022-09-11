@@ -1,15 +1,15 @@
 const router = require("express").Router();
 const People = require("../models/People")
 
-const bcrypt = require("bcryptjs");
+const bcryptjs = require("bcryptjs");
 
 //Register
 router.post("/register", async (req,res)=>{
   
     try{
         //password encryption
-        const salt = await bcrypt.genSalt(10);
-        const hiddedpassword = await bcrypt.hash(req.body.password, salt);
+        const salt = await bcryptjs.genSalt(10);
+        const hiddedpassword = await bcryptjs.hash(req.body.password, salt);
 
         //creating new user
         const newUser = new People({
@@ -32,7 +32,7 @@ router.post("/login",async (req,res)=>{
         const user = await People.findOne({mail: req.body.mail});
         if (!user) return res.status(400).json("User not found");
 
-        const crtPassword = await bcrypt.compare(req.body.password, user.password);
+        const crtPassword = await bcryptjs.compare(req.body.password, user.password);
         if (!crtPassword) return res.status(404).json("Incorrect Pasword");
 
         res.status(200).json(user);
