@@ -19,16 +19,18 @@ mongoose
  .then(() => console.log("Database connected!"))
  .catch(err => console.log(err));
 
+app.use(express.static("build"))
+
 //middleware
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
 
-app.use("/api/users",useRoute)
-app.use("/api/auth",useAuth)
-app.use("/api/posts",usePost)
-app.use("/api/profile",useProfile)
+app.use("/users",useRoute)
+app.use("/auth",useAuth)
+app.use("/posts",usePost)
+app.use("/profile",useProfile)
 
 app.listen(process.env.PORT || 8900,()=>{
     console.log("Backend server connected")
