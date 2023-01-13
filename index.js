@@ -26,6 +26,10 @@ app.use(helmet());
 app.use(morgan("common"));
 app.use(cors());
 
+app.get("/",(req,res)=>{
+ res.status(200).json("NP")
+});
+
 
 app.use("/api/users",useRoute)
 app.use("/api/auth",useAuth)
