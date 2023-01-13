@@ -3,6 +3,10 @@ const People = require("../models/People")
 
 const bcryptjs = require("bcryptjs");
 
+router.get("/",(req,res)=>{
+  res.json(200).status("Authentication page")
+})
+
 //Register
 router.post("/register", async (req,res)=>{
   
