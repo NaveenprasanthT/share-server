@@ -4,7 +4,7 @@ const People = require("../models/People")
 const bcryptjs = require("bcryptjs");
 
 router.get("/",(req,res)=>{
-  res.json(200).status("Authentication page")
+  res.status(200).json("Authentication page")
 })
 
 //Register
