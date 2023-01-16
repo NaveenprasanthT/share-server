@@ -11,7 +11,7 @@ const useRoute = require("./routes/users.js");
 const useAuth = require("./routes/auth.js");
 const usePost = require("./routes/posts.js");
 const useProfile = require("./routes/profile.js");
-
+const useComment = require("./routes/comments.js")
 
 dotenv.config();
 
@@ -26,16 +26,17 @@ app.use(helmet());
 app.use(morgan("common"));
 app.use(cors());
 
-app.get("/",(req,res)=>{
- res.status(200).json("NP")
-});
-
 
 app.use("/api/users",useRoute)
 app.use("/api/auth",useAuth)
 app.use("/api/posts",usePost)
 app.use("/api/profile",useProfile)
+app.use("/api/comment",useComment)
 
-app.listen(process.env.PORT || 8900,()=>{
+app.get("/",(req,res)=>{
+    res.status(200).json("The new beggining...")
+})
+
+app.listen(process.env.PORT || 8000,()=>{
     console.log("Backend server connected")
 })
